@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCHelloWorldEntity.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace MVCHelloWorldDAL
 {
     class LeaveRequestDAL
     {
-
+        MVCHelloWorldContext dbContext;
         #region Constructor
         public LeaveRequestDAL()
         {
