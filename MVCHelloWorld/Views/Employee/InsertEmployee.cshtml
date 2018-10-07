@@ -1,0 +1,75 @@
+﻿@using MVCHelloWorldVM;
+@model EmployeeVM
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>InsertEmployee</title>
+</head>
+<body>
+    <div> 
+       @using (Html.BeginForm("InsertEmployeeAdd", "Employee"))
+       {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(p=>p.Name)
+                </td>
+                <td>
+                    @Html.TextBoxFor(p=>p.Name,new { @id="Name"})
+                    @Html.ValidationMessageFor(p=>p.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(p => p.Age)
+                </td>
+                <td>
+                    @Html.EditorFor(p => p.Age, new { @id = "Age",@min="0" })
+                    @Html.ValidationMessageFor(p => p.Age)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(p => p.Email)
+                </td>
+                <td>
+                    @Html.EditorFor(p => p.Email, new { @id = "Email" })
+                    @Html.ValidationMessageFor(p => p.Email)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(p => p.GenderID)
+                </td>
+                <td>
+                 
+                    @Html.DropDownListFor(model => model.GenderID,
+                                               (SelectList)ViewBag.Genders, String.Empty, new { @id = "GenderID" })
+
+                    @Html.ValidationMessageFor(p => p.GenderID)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" > Add</button>
+                </td>
+            </tr>
+        </table>
+       }
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿@using MVCHelloWorldVM;
+@model IEnumerable<EmployeeVM>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+
+        <table>
+@{ 
+    foreach (EmployeeVM item in Model)
+    {
+                <tr>
+                    <td>
+                        @item.Name
+                        
+                    </td>
+                </tr>
+        }
+    }
+        </table>
+    </div>
+
+    @Html.ActionLink("AddNew","InsertEmployee")
+</body>
+</html>
